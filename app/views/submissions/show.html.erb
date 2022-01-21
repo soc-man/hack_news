@@ -3,8 +3,9 @@
 <%= render @submission %>
 
 <div>
-  <%= link_to "Edit this submission", edit_submission_path(@submission) %> |
   <%= link_to "Back to submissions", submissions_path %>
-
-  <%= button_to "Destroy this submission", @submission, method: :delete %>
+  <% if @submission.user == current_user %>
+    <%= link_to "Edit this submission", edit_submission_path(@submission) %> 
+    <%= button_to "Destroy this submission", @submission, method: :delete %>
+  <% end %>
 </div>
