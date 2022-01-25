@@ -1,15 +1,15 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Submissions</h1>
-
-<div id="submissions">
-  <% @submissions.each do |submission| %>
-    <%= render submission %>
-    <p>
-      <%= link_to "Show this submission", submission %>
-    </p>
-  <% end %>
-</div>
-<% if user_signed_in? %>
-  <%= link_to "New submission", new_submission_path %>
-<% end %>
+<table>
+  <tbody>
+    <% @submissions.each do |submission| %>
+      <tr class="post">
+        <td>
+          <%= link_to submission.title, submission, class: "title" %>
+          <%= link_to submission.url, "(#{submission.url})", target: "_blank" %>
+        </td>
+        <tr class="post">
+          <td> <p>325 points by <%= submission.user.email %> <%= time_ago_in_words(submission.created_at) %> | 96 comments </p></td>
+        </tr>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

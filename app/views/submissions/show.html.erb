@@ -1,11 +1,8 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @submission %>
-
-<div>
-  <%= link_to "Back to submissions", submissions_path %>
+<div class="page-header">
+  <h3><%= @submission.title %></h3> <a href=""><%= @submission.url %></a>
+  <br>
   <% if @submission.user == current_user %>
-    <%= link_to "Edit this submission", edit_submission_path(@submission) %> 
-    <%= button_to "Destroy this submission", @submission, method: :delete %>
+    <%= link_to 'delete', @submission, method: :delete, data: {confirm: "Are you sure?" } %> |
+    <%= link_to 'back', submissions_path %>
   <% end %>
 </div>
