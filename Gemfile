@@ -43,6 +43,7 @@ gem "bootsnap", require: false
 
 gem 'devise'
 gem 'bootstrap-sass'
+gem 'acts_as_votable'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
