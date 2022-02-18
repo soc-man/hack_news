@@ -1,15 +1,17 @@
 <div class="page-header">
+  <%= link_to 'back', root_path %>
   <h3>
-    <%= link_to like_submission_path(@submission), method: :put do %>
+    <%= link_to like_submission_path(@submission), data: { turbo_method: :put } do %>
       <i class="fa fa-caret-up fa-lg " aria-hidden="true"></i>
     <% end %>
-    <%= @submission.title %></h3> <a href=""><%= @submission.url %></a>
+    <%= @submission.title %></h3> 
+    <%= link_to @submission.url, URI::HTTP.build({:host => @submission.url}).to_s, target: "_blank" %>
   </h3>
   <br>
   <% if @submission.user == current_user %>
-    <%= link_to 'delete', @submission, method: :delete, data: {confirm: "Are you sure?" } %> |
-    <%= link_to 'back', submissions_path %>
-  <% end %>
+    <%= button_to 'delete', @submission, method: :delete, data: {confirm: "Are you sure?" }, :class => 'btn btn-danger' %> 
+  <% end %> <br>
+  
   <%= simple_form_for [@submission, Comment.new] do |f| %>
     <%= f.text_area :body, class: "form-control" %>
     <br>

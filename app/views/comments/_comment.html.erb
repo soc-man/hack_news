@@ -7,6 +7,6 @@
   </div>
 
   <% if comment.user == current_user %>
-    <%= link_to 'delete', comment, method: :delete, data: { confirm: 'are you sure?'} %>
+    <%= link_to 'delete', comment, data: { turbo_method: :delete } %>
   <% end %>
 <% end %>

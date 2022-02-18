@@ -62,14 +62,14 @@ class SubmissionsController < ApplicationController
     @submission = Submission.find(params[:id])
     
     @submission.upvote_by current_user
-    redirect_to :back
+    redirect_back fallback_location: root_url
   end
 
   def downvote
     @submission = Submission.find(params[:id])
     
     @submission.downvote_by current_user
-    redirect_to :back
+    redirect_back fallback_location: root_url
   end
 
   private
