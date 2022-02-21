@@ -4,7 +4,7 @@ class SubmissionsController < ApplicationController
 
   # GET /submissions or /submissions.json
   def index
-    @submissions = Submission.all
+    @submissions = Submission.order(cached_votes_total: :desc)
   end
 
   # GET /submissions/1 or /submissions/1.json
